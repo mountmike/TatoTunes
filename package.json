@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mountmike/TatoTunes.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "mountmike",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mountmike/TatoTunes/issues"
@@ -21,7 +23,9 @@
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
     "fs": "^0.0.1-security",
+    "memorystore": "^1.6.7",
     "pg": "^8.10.0",
     "underscore": "^1.13.6"
   },
