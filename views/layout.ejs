@@ -11,17 +11,24 @@
 <body>
     <header>
         <div class="search-wrapper">
-            <a href="/feed">tato</a>
+            <a href="/feed" class="btn">tato</a>
             <form action="/search" method="get">
                 <input type="hidden" name="_method" value="get">
                 <input type="text" name="searchString" value="Search TatoTunes">
-                <button>Go</button>
+                <button class="btn">Go</button>
             </form>
         </div>
         <nav>
             <ul>
-                <li><a href="/user/new">Sign Up</a></li>
-                <li><a href="/session/login">Login</a></li>
+                <% if (isLoggedIn()) { %>
+                    <form action="/sessions" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <button class="btn">logout</button>
+                    </form>
+                <% } else { %>
+                <li><a href="/user/new" class="btn">Sign Up</a></li>
+                <li><a href="/session/login" class="btn">Login</a></li>
+                <% } %>
             </ul>
         </nav>
     </header>

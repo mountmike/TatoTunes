@@ -30,7 +30,7 @@ app.use(session({
     saveUninitialized: true,
 }));
 app.use(setCurrentUser);
-app.use(viewHelpers);
+app.use(viewHelpers.dtDemoisLoggedIn);
 
 
 // Routes & controllers
