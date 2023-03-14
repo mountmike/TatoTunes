@@ -1,6 +1,6 @@
-* {
+/* * {
     border: red 1px solid;
-}
+} */
 
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
 
@@ -13,6 +13,7 @@ body {
     justify-content: space-between;
     align-items: center;
     font-family: 'Hind', sans-serif;
+    color: white;
 }
 
 header {
@@ -41,6 +42,10 @@ footer {
     background-color: brown;
 }
 
+h1 {
+    font-size: 2em;
+}
+
 .footer-text {
     margin: 0;
     text-align: center;
@@ -48,6 +53,11 @@ footer {
 
 .search-wrapper {
     margin: 0 1%;
+    display: flex;
+}
+
+.search-wrapper > a {
+    margin: 0 5px 0 0;
 }
 
 nav {
@@ -55,9 +65,30 @@ nav {
 }
 
 nav > ul {
+    display: flex;
     list-style: none;
 }
 
+nav > ul > li {
+   margin: 0 5px;
+}
 section {
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+}
+
+article {
+    border: white 1px solid;
+    padding: 5%;
+}
+
+.post-interaction-wrapper {
+    display: flex;
+}
+
+.comments-wrapper {
+    display: flex;
+    flex-direction: column;
     margin: 5%;
 }

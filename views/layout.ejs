@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TatoTunes</title>
     <link rel="stylesheet" href="/style.css">
+    <script src="/main.js" defer></script>
 </head>
 <body>
     <header>
         <div class="search-wrapper">
+            <a href="/feed">tato</a>
             <form action="/search" method="get">
                 <input type="hidden" name="_method" value="get">
                 <input type="text" name="searchString" value="Search TatoTunes">
@@ -19,17 +21,12 @@
         <nav>
             <ul>
                 <li><a href="/">Sign Up</a></li>
+                <li><a href="/">Log In</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section>
-            <h2>music thats good to eat potatoes to</h2>
-            <p>a place to find that magical union between tato and tune that we all crave</p>
-        </section>
-        <section>
         <%- body %>
-        </section>
     </main>
     <footer>
         <p class="footer-text">&copy; mountmike <%= new Date(). getFullYear()  %></p>

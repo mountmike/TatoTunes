@@ -1,0 +1,16 @@
+<article>
+    <h1><%= post.title %></h1>
+    <iframe width="560" height="315" src="<%= post.yt_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <p><%= post.content %></p>
+    <p>Author: <%= post.contributor_id %></p>
+    <p>Date create: <%= post.date_created.toLocaleString()  %></p>
+    <div class="post-interaction-wrapper">
+        <button>comment</button></a>
+        <button value="<%= post.id %>">like</button>
+    </div>
+</article>
+<a id="commentsAnchor">
+    <div class="comments-wrapper">
+        <p>comments</p>
+    </div>
+</a>

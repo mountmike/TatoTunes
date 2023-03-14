@@ -5,6 +5,8 @@ const expressLayouts = require("express-ejs-layouts");
 const methodOverride = require("./middlewares/method_override");
 const setCurrentUser = require("./middlewares/set_current_user");
 const viewHelpers = require("./middlewares/view_helpers");
+const feedController = require("./controllers/feed_controller");
+const postController = require("./controllers/post_controller");
 const session = require("express-session");
 const MemoryStore = require('memorystore')(session);
 const db = require("./db");
@@ -29,9 +31,9 @@ app.use(setCurrentUser);
 app.use(viewHelpers);
 
 
-app.get("/", (req, res) => {
-    res.render("home")
-})
+// Routes & controllers
+app.use("/feed", feedController)
+app.use("/post", postController)
 
 
 

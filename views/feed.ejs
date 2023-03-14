@@ -1,0 +1,21 @@
+<section>
+    <h1>music thats good to eat potatoes to</h1>
+    <p>a place to find that magical union between tato and tune that we all crave</p>
+</section>
+<section>
+<% for (const post of posts) { %>
+<article>
+    <a href="/post/<%= post.id %>">
+        <h2><%= post.title %></h2>
+    </a>
+    <iframe width="560" height="315" src="<%= post.yt_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <p><%= post.content %></p>
+    <p>Author: <%= post.contributor_id %></p>
+    <p>Date create: <%= post.date_created.toLocaleString()  %></p>
+    <div class="post-interaction-wrapper">
+        <a href="/post/<%= post.id %>#commentsAnchor" class="btn">comment</a>
+        <button class="btn" value="<%= post.id %>">like</button>
+    </div>
+</article>
+<% } %>
+</section>
