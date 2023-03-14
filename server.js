@@ -7,6 +7,8 @@ const setCurrentUser = require("./middlewares/set_current_user");
 const viewHelpers = require("./middlewares/view_helpers");
 const feedController = require("./controllers/feed_controller");
 const postController = require("./controllers/post_controller");
+const sessionController = require("./controllers/session_controller");
+const userController = require("./controllers/user_controller");
 const session = require("express-session");
 const MemoryStore = require('memorystore')(session);
 const db = require("./db");
@@ -32,8 +34,10 @@ app.use(viewHelpers);
 
 
 // Routes & controllers
-app.use("/feed", feedController)
-app.use("/post", postController)
+app.use("/feed", feedController);
+app.use("/post", postController);
+app.use("/session", sessionController);
+app.use("/user", userController);
 
 
 
