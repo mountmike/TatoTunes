@@ -2,7 +2,7 @@ const { Pool } = require("pg")
 
 const config = {
     dev: {
-        database: "goodfoodhunting"
+        database: "tatotunes"
     },
     prod: {
         connectionString: process.env.DATABASE_URL

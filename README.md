@@ -25,8 +25,8 @@ Theme
     - Simplification aesthetic?
 
 
-Flow diagram
-![Flow Chart 01]()
+Wireframe for Home page:
+![Wireframe1](https://github.com/mountmike/TatoTunes/blob/main/public/images/wireframe1.png?raw=true)
 
 # Phase 2
 
