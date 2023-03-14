@@ -30,7 +30,7 @@ app.use(viewHelpers);
 
 
 app.get("/", (req, res) => {
-    res.send("good")
+    res.render("home")
 })
 
 

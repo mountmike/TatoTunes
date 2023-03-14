@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TatoTunes</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    
+    <header>
+        <div class="search-wrapper">
+            <form action="/search" method="get">
+                <input type="hidden" name="_method" value="get">
+                <input type="text" name="searchString" value="Search TatoTunes">
+                <button>Go</button>
+            </form>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>music thats good to eat potatoes to</h2>
+            <p>a place to find that magical union between tato and tune that we all crave</p>
+        </section>
+        <section>
+        <%- body %>
+        </section>
+    </main>
+    <footer>
+        <p class="footer-text">&copy; mountmike <%= new Date(). getFullYear()  %></p>
+    </footer>
 </body>
 </html>
