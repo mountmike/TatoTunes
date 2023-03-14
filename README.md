@@ -1,33 +1,32 @@
-# TatoTunes | A blog type crud app that focuses on pairing music with good potatoes
+# TatoTunes | A blog type crud app that focuses on pairing music & potatoes
 
-Project 1 for GA SEI.
+Project 2 for GA SEI - Express.js CRUD app using Postgres deployed on Render.
 
 Try it [here] (https://mountmike.github.io/Tic-Tac-Toe/)
 
 
 Screenshot:
-![Screenshot01](https://github.com/mountmike/Tic-Tac-Toe/blob/main/images/tictactoe.exe%20screenshot.png?raw=true)
+
 
 
 
 # **Planning process** | Phase 1
 
+The plan is to build a newsfeed centric app that enables users to consume and interact with blog posts concerning music that is good to eat potatoes to. 
+
+The feed can be viewed by the public but to interact with posts (comment/like) you will need an account. There will also be an option to ask TatoTunes questions which will get published as a post.
+
+I have initially outlined a minimum of 3 database tables required for storing data (users, posts, comments/likes). I will make an owner/contributer user type for myself or future business partners that will give access to creating a new post but most all users will be only have the ability to comment and submit questions to the blog.
 
 Theme
-- Windows 98 (mimic minesweeper)
-    - use a library (OS GUI 98 / 98.cssor) or DIY?
-
-Pseudocode
-- store board data in a matrix
-- make grid of blocks (divs) that corelate with matrix
-    - on click target div and update matrix value/DOM
-- toggle between player 1/player 2 with boolean variable
-- check if matrix is equal to a winning pattern
-    - return winner!
+- POTATO CITY
+    - Mr potato head?
+    - soft vector potato animations?
+    - Simplification aesthetic?
 
 
 Flow diagram
-![Flow Chart 01](https://github.com/mountmike/Tic-Tac-Toe/blob/main/images/Figjam1.png?raw=true)
+![Flow Chart 01]()
 
 # Phase 2
 
