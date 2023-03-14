@@ -1,19 +1,20 @@
 /* * {
-    border: red 1px solid;
+    border: white 1px solid;
 } */
 
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
 
 body {
     margin: 0;
-    min-height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     font-family: 'Hind', sans-serif;
-    color: white;
+    color: #131211;
+    background-color: #9c2d3c;
+    overflow: hidden;
 }
 
 header {
@@ -21,25 +22,27 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position:  fixed;
+    position:  sticky;
     width: 100%;
-    z-index: 2;
-    background-color: brown;
+    z-index: 2; 
 }
 
 main {
-    background-color: brown;
+    background-color: white;
     width: 50%;
     margin: 10% 0%;
+    border-radius: 10px;
+    box-shadow: 10px 10px 33px -6px rgba(0,0,0,0.76);
+    -webkit-box-shadow: 10px 10px 33px -6px rgba(0,0,0,0.76);
+    -moz-box-shadow: 10px 10px 33px -6px rgba(0,0,0,0.76);
 }
 
 footer {
+    position: fixed;
     margin: 0;
     width: 100%;
     bottom: 0px;
-    z-index: 2;
-
-    background-color: brown;
+    background-color: white;
 }
 
 h1 {
@@ -54,6 +57,8 @@ h1 {
 .search-wrapper {
     margin: 0 1%;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search-wrapper > a {
@@ -99,7 +104,7 @@ article {
     gap: 5%;
 }
 
-button {
+button, input[type="submit"], input[type="reset"] {
 	background: none;
 	color: inherit;
 	border: none;
@@ -109,8 +114,92 @@ button {
 	outline: inherit;
 }
 
-.btn {
-    background-color: aliceblue;
-    color: black;
-    padding: 1em;
+.btn,
+.btn:link,
+.btn:visited {
+ text-transform: uppercase;
+ text-decoration: none;
+ color: white;
+ padding: .5rem .8rem;
+ border: 2px solid;
+ border-radius: 1000px;
+ display: inline-block;
+ transition: all .2s;
+ position: relative;
 }
+
+.btn:hover {
+ box-shadow: 0 10px 20px rgba(27, 27, 27, .5);
+}
+
+.btn::after {
+ content: "";
+ display: inline-block;
+ height: 100%;
+ width: 100%;
+ border-radius: 100px;
+ top: 0;
+ left: 0;
+ position: absolute;
+ z-index: -1;
+ transition: all .3s;
+}
+
+i {
+    color: white;
+    padding: 1rem;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+  }
+  
+  .search__input {
+    font-family: inherit;
+    font-size: inherit;
+    background-color: #f4f2f2;
+    border: none;
+    color: #646464;
+    padding: .5rem .8rem;
+    border-radius: 30px;
+    width: 12em;
+    transition: all ease-in-out .5s;
+    margin-right: -2rem;
+  }
+  
+  .search__input:hover, .search__input:focus {
+    box-shadow: 0 0 1em #00000013;
+  }
+  
+  .search__input:focus {
+    outline: none;
+    background-color: #f0eeee;
+  }
+  
+  .search__input::-webkit-input-placeholder {
+    font-weight: 100;
+    color: #ccc;
+  }
+  
+  .search__input:focus + .search__button {
+    background-color: #f0eeee;
+  }
+  
+  .search__button {
+    border: none;
+    background-color: #f4f2f2;
+    margin-top: .1em;
+  }
+  
+  .search__button:hover {
+    cursor: pointer;
+  }
+  
+  .search__icon {
+    height: 1em;
+    width: 1em;
+    fill: #b4b4b4;
+  }

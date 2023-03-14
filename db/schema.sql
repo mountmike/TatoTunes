@@ -32,3 +32,5 @@ CREATE TABLE comments (
 insert into posts (title, content, yt_url, contributor_id, date_created, like_count, comment_count) values ('Hot Chip - Need You Now', 'potato chips are always good.', 'https://www.youtube.com/embed/lfH5LmhvQQk', 1, CURRENT_TIMESTAMP, 0, 0);
 insert into posts (title, content, yt_url, contributor_id, date_created, like_count, comment_count) values ('Lynyrd Skynyrd - Sweet Home Alabama', 'there’s only one thing sweeter than reese witherspoon when it comes to this track. roasted white delight sweet potatoes. get around it is all we can say.', 'https://www.youtube.com/embed/ye5BuYf8q4o', 1, CURRENT_TIMESTAMP, 0, 0);
 
+
+insert into comments (post_id, user_id, content, date_created) values (1, 2, 'Very good', CURRENT_TIMESTAMP);
