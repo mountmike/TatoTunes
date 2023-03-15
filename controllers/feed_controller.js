@@ -6,6 +6,7 @@ const db = require("./../db")
 
 // async functions for routes
 const getFeed = async (req, res, next) => {
+    console.log("2 ", req.session);
     try {
         let posts = await db.any("SELECT * from posts order by id desc limit 20;");
         let users = await db.any("SELECT * from users order by id;");
@@ -17,5 +18,6 @@ const getFeed = async (req, res, next) => {
 }
 
 router.get("/", getFeed);
+
 
 module.exports = router

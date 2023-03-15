@@ -9,15 +9,13 @@
         <h2><%= post.title %></h2>
     </a>
     <iframe width="560" height="315" src="<%= post.yt_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    <p><%= post.post_content %></p>
+    <p><%= post.content %></p>
     <p>Author: <%= users[post.contributor_id - 1].full_name %></p>
     <p>Date create: <%= post.date_created.toLocaleString()  %></p>
     <div class="post-interaction-wrapper">
         <div class="btn-wrapper">
             <p>likes: <%= post.like_count %></p>
-            <% let commentCount = 0 %>
-            <% comments.forEach(comment => comment.post_id == post.id ? commentCount++ : null) %>
-            <p>comments: <%= commentCount %></p>
+            <p>comments: <%= post.comment_count %></p>
         </div>
         <div class="btn-wrapper">
             <a href="/post/<%= post.id %>#commentsAnchor" class="btn">comment</a>

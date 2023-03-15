@@ -9,24 +9,20 @@ const login = async (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
     try {
-        let user = await db.any(`SELECT * from users where email = $1`, email);
+        let user = await db.one(`SELECT * from users where email = $1`, email);
         if (user.length === 0) {
             return res.redirect("/login") // no records found, stay at login page
         } else {
-            user = user[0];
             bcrypt.compare(password, user.password_digest, (err, result) => {
                 if (result) {
-                    console.log(result);
                     req.session.userId = user.id
-                    req.session.email = user.email
-                    req.session.fullName = user.full_name
+                    console.log("1 ", req.session);
                     res.redirect("/feed")
                 } else {
                     res.redirect("/login");
                 }
             })
         }
-
     } catch (err) {
         next(err)
     }
@@ -40,7 +36,7 @@ router.get("/login", (req, res) => {
 
 router.post("/", login);
 
-router.delete("/sessions", (req, res) => {
+router.delete("/", (req, res) => {
     req.session.destroy(() => {
         res.redirect("/");
     })

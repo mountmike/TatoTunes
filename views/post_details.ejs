@@ -1,7 +1,7 @@
 <article>
     <h1><%= post.title %></h1>
     <iframe width="560" height="315" src="<%= post.yt_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    <p><%= post.post_content %></p>
+    <p><%= post.content %></p>
     <p>Author: <%= users[post.contributor_id - 1].full_name %></p>
     <p>Date create: <%= post.date_created.toLocaleString()  %></p>
     <div class="post-interaction-wrapper">
@@ -10,12 +10,12 @@
     </div>
 </article>
 <a id="commentsAnchor">
-    <% if (isLoggedIn()) { %>
+    <% if (true) { %>
     <section>
         <form action="/post/:postId/comment" method="post">
             <input type="hidden" name="_method" value="post">
             <label for="content"></label>
-            <input type="text" name="content" placeholder="type here">
+            <input type="text" name="content" placeholder="type here" id="asdf">
             <input type="hidden" name="post_id" value="<%= post.id %>">
             <input type="hidden" name="date_created" value="CURRENT_TIMESTAMP">
             <button>Comment</button>
@@ -25,7 +25,7 @@
     <div class="comments-wrapper">
         <% for (let comment of comments) { %>
             <article>
-                <p><%= comment.comment_content %></p>
+                <p><%= comment.content %></p>
                 <p><%= users[comment.user_id - 1].full_name %></p>
                 <p><%= comment.date_created.toLocaleString() %></p>
             </article>
