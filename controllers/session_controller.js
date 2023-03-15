@@ -1,21 +1,19 @@
 const express = require("express");
-const router = express.Router();
+const Router = require('express-promise-router')
+const router = new Router();
 const bcrypt = require('bcrypt');
 const db = require("./../db");
 
-router.get("/login", (req, res) => {
-    res.render("login");
-});
-
-router.post("/", (req, res) => {
+// async functions for routes
+const login = async (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
-    const sql = `SELECT * from users where email = '${email}';`
-    db.query(sql, (err, dbRes) => {
-        if (dbRes.rows.length === 0) {
+    try {
+        let user = await db.one(`SELECT * from users where email = '${email}';`);
+        if (user.length === 0) {
             return res.redirect("/login") // no records found, stay at login page
         } else {
-            const user = dbRes.rows[0]
+            user = user[0];
             bcrypt.compare(password, user.password_digest, (err, result) => {
                 if (result) {
                     req.session.userId = user.id
@@ -27,8 +25,19 @@ router.post("/", (req, res) => {
                 }
             })
         }
-    })
+
+    } catch (err) {
+        next(err)
+    }
+}
+
+
+
+router.get("/login", (req, res) => {
+    res.render("login");
 });
+
+router.post("/", login);
 
 router.delete("/sessions", (req, res) => {
     req.session.destroy(() => {

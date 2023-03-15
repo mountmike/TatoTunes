@@ -1,12 +1,17 @@
-const { Pool } = require("pg")
+const pgp = require('pg-promise')({});
+const db = pgp('postgress:localhost:5432/tatotunes');
 
-const config = {
-    dev: {
-        database: "tatotunes"
-    },
-    prod: {
-        connectionString: process.env.DATABASE_URL
-    }
-}
+// const { Pool } = require("pg")
 
-module.exports = new Pool(process.env.DATABASE_URL ? config.prod : config.dev)
+// const config = {
+//     dev: {
+//         database: "tatotunes"
+//     },
+//     prod: {
+//         connectionString: process.env.DATABASE_URL
+//     }
+// }
+
+// const db = pgp(process.env.DATABASE_URL ? config.prod : config.dev)
+
+module.exports = db;

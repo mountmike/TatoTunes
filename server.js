@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 8888;
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const expressLayouts = require("express-ejs-layouts");
 const methodOverride = require("./middlewares/method_override");
 const setCurrentUser = require("./middlewares/set_current_user");
@@ -18,7 +20,7 @@ app.set("view engine", "ejs");
 app.set("layout layout_login", false);
 app.use(expressLayouts);
 app.use(express.static("public"));
-app.use(express.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride);
 app.use(session({
     cookie: { maxAge: 86400000 },
@@ -31,6 +33,8 @@ app.use(session({
 }));
 app.use(setCurrentUser);
 app.use(viewHelpers.dtDemoisLoggedIn);
+app.use(cors());
+app.use(bodyParser.json());
 
 
 // Routes & controllers
