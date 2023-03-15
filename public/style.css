@@ -81,6 +81,7 @@ nav {
 nav > ul {
     display: flex;
     list-style: none;
+    margin-right: 1%;
 }
 
 nav > ul > li {
@@ -100,6 +101,13 @@ article {
 .post-interaction-wrapper {
     display: flex;
     flex-direction: column;
+}
+
+.post-interaction-wrapper > form > button, .post-interaction-wrapper > a {
+  background-color: #9c2d3c;
+  margin: 1%;
+  text-align: center;
+  width: 20%;
 }
 
 .comments-wrapper {

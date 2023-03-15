@@ -293,13 +293,13 @@
             </div>
             <ul>
                 <% if (isLoggedIn()) { %>
-                    <form action="/sessions" method="post">
+                    <form action="/session" method="post">
                         <input type="hidden" name="_method" value="delete">
                         <button class="btn">logout</button>
                     </form>
                 <% } else { %>
                 <li><a href="/user/new" class="btn">Sign Up</a></li>
-                <li><a href="/session/login" class="btn">Login</a></li>
+                <li><a href="/" class="btn">Login</a></li>
                 <% } %>
             </ul>
         </nav>

@@ -11,6 +11,7 @@ const sessionController = require("./controllers/session_controller");
 const userController = require("./controllers/user_controller");
 const session = require('express-session');
 const pgSession = require('connect-pg-simple')(session);
+const ensureLoggedIn = require("./middlewares/ensure_logged_in")
 
 // const MemoryStore = require('memorystore')(session);
 const db = require("./db");
@@ -41,12 +42,13 @@ app.use(viewHelpers);
 
 // Routes & controllers
 app.use("/session", sessionController);
-app.use("/feed", feedController);
-app.use("/post", postController);
-
+app.use("/feed", ensureLoggedIn, feedController);
+app.use("/post", ensureLoggedIn, postController);
 app.use("/user", userController);
 
-
+app.get("/", (req, res) => {
+  res.render("login");
+});
 
 
 

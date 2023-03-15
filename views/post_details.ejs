@@ -3,15 +3,24 @@
     <iframe width="560" height="315" src="<%= post.yt_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <p><%= post.content %></p>
     <p>Author: <%= users[post.contributor_id - 1].full_name %></p>
-    <p>Date create: <%= post.date_created.toLocaleString()  %></p>
+    <p>Date create: <%= post.date_created  %></p>
     <div class="post-interaction-wrapper">
-        <button class="btn">comment</button></a>
-        <button class="btn" value="<%= post.id %>">like</button>
+        <div class="btn-wrapper">
+            <p>likes: <%= post.like_count %></p>
+            <p>comments: <%= post.comment_count %></p>
+        </div>
+
+        <a href="#commentsAnchor" class="btn">comment</a>
+        <form action="/post/<%= post.id %>/like" method="post">
+            <input type="hidden" name="like_count" value="<%= locals.currentUser %>">
+            <button class="btn" id="likeBtn">like</button>
+        </form>
+        
     </div>
 </article>
 <a id="commentsAnchor">
     <% if (true) { %>
-    <section>
+    <section class="">
         <form action="/post/:postId/comment" method="post">
             <input type="hidden" name="_method" value="post">
             <label for="content"></label>

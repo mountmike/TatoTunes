@@ -1,18 +1,21 @@
 const express = require("express");
-const Router = require('express-promise-router')
-const router = new Router();
+const router = express.Router();
 const bcrypt = require('bcrypt');
 const db = require("./../db");
+const ensureLoggedIn = require("./../middlewares/ensure_logged_in")
 
 // async functions for routes
 const login = async (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
     try {
-        let user = await db.one(`SELECT * from users where email = $1`, email);
+        let user = await db.query(`SELECT * from users where email = $1`, [email]);
+        user = user.rows;
+        console.log(user);
         if (user.length === 0) {
             return res.redirect("/login") // no records found, stay at login page
         } else {
+            user = user[0];
             bcrypt.compare(password, user.password_digest, (err, result) => {
                 if (result) {
                     req.session.userId = user.id
@@ -28,18 +31,14 @@ const login = async (req, res, next) => {
     }
 }
 
-
-
-router.get("/login", (req, res) => {
-    res.render("login");
-});
-
-router.post("/", login);
-
-router.delete("/", (req, res) => {
+const logout = (req, res) => {
     req.session.destroy(() => {
-        res.redirect("/");
+        res.redirect("/feed");
     })
-});
+}
+
+router.post("/", login, );
+
+router.delete("/", logout);
 
 module.exports = router
