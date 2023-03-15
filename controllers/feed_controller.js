@@ -4,6 +4,7 @@ const router = new Router();
 const db = require("./../db")
 // const ensureLoggedIn = require("./../middlewares/ensure_logged_in")
 
+// async functions for routes
 const getFeed = async (req, res, next) => {
     try {
         let posts = await db.any("SELECT * from posts order by id desc limit 20;");

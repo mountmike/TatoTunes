@@ -1,7 +1,7 @@
 <article>
     <h1><%= post.title %></h1>
     <iframe width="560" height="315" src="<%= post.yt_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    <p><%= post.content %></p>
+    <p><%= post.post_content %></p>
     <p>Author: <%= users[post.contributor_id - 1].full_name %></p>
     <p>Date create: <%= post.date_created.toLocaleString()  %></p>
     <div class="post-interaction-wrapper">
@@ -25,7 +25,7 @@
     <div class="comments-wrapper">
         <% for (let comment of comments) { %>
             <article>
-                <p><%= comment.content %></p>
+                <p><%= comment.comment_content %></p>
                 <p><%= users[comment.user_id - 1].full_name %></p>
                 <p><%= comment.date_created.toLocaleString() %></p>
             </article>
