@@ -30,7 +30,10 @@ Wireframe for Home page:
 
 # Phase 2
 
-Basic code complete that resembles a game of tic tac toe and interacts with DOM somewhat appropriately. Features still lacking though such as:
+After first day of coding I had a rough MVP but was running into callback hell when it came to running multiple queries to the db on one route. It was clear that I needed a better approach so I added 'pg-promise' to my modules and began researching how to use it.
+
+
+
 
 **Some kind of winning/drawing sequence with the DOM**
 - a popup DIV that becomes visible at the conclusion of each round
