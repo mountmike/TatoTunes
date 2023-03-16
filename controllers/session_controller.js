@@ -19,8 +19,7 @@ const login = async (req, res, next) => {
             bcrypt.compare(password, user.password_digest, (err, result) => {
                 if (result) {
                     req.session.userId = user.id
-                    console.log("1 ", req.session);
-                    res.redirect("/feed")
+                    res.redirect("/feed");
                 } else {
                     res.redirect("/login");
                 }

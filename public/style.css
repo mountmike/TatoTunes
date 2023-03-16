@@ -62,6 +62,10 @@ footer {
     bottom: 0px;
 }
 
+footer > a {
+  text-decoration: none;
+}
+
 h1 {
     font-size: 2em;
 }
@@ -408,4 +412,12 @@ textarea {
 
 .form-wrapper > textarea {
   width: 97%;
+}
+
+.profile-card {
+  margin: 0;
+}
+
+h3 {
+  margin: 1%;
 }

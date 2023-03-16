@@ -43,7 +43,7 @@ app.use(viewHelpers);
 // Routes & controllers
 app.use("/session", sessionController);
 app.use("/feed", ensureLoggedIn, feedController);
-app.use("/post", ensureLoggedIn, postController);
+app.use("/post", postController);
 app.use("/user", userController);
 
 app.get("/", (req, res) => {

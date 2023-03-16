@@ -14,7 +14,7 @@ const getFeed = async (req, res, next) => {
     }
 }
 
-router.get("/", getFeed);
+router.get("/", ensureLoggedIn, getFeed);
 
 
 module.exports = router
