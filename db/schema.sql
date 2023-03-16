@@ -13,7 +13,7 @@ CREATE TABLE posts (
     title TEXT,
     content TEXT,
     yt_url TEXT,
-    contributor_id INTEGER,
+    contributor_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
     date_created timestamp,
     like_count INTEGER,
     comment_count INTEGER
@@ -21,18 +21,29 @@ CREATE TABLE posts (
 
 CREATE TABLE comments (
     id SERIAL PRIMARY KEY,
-    post_id INTEGER,
-    user_id INTEGER,
+    post_id INTEGER REFERENCES posts (id) ON DELETE CASCADE,
+    user_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
     content TEXT,
     date_created timestamp
 );
 
 CREATE TABLE likes (
     id SERIAL PRIMARY KEY,
-    post_id INTEGER,
-    user_id INTEGER,
+    post_id INTEGER REFERENCES posts (id) ON DELETE CASCADE,
+    user_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
     date_created timestamp
 );
+
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+  "sess" json NOT NULL,
+  "expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+
+ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+CREATE INDEX "IDX_session_expire" ON "session" ("expire");
 
 -- insert dummy posts into posts
 

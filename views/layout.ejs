@@ -30,7 +30,7 @@
                 <% if (isLoggedIn()) { %>
                     
                     <form action="/session" method="post">
-                        <span class="welcome-msg">Hi <%= locals.currentUser.full_name %></span>
+                        <a href="/post/new"><i class="fa-solid fa-plus fa-xl"></i></a>
                         <input type="hidden" name="_method" value="delete">
                         <button class="btn">logout</button>
                     </form>

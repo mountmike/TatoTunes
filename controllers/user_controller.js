@@ -11,12 +11,7 @@ const addNewUser = async (req, res, next) => {
     try {
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(password, salt, (err, digestedPassword) => {
-                db.query('INSERT INTO users (full_name, email, password_digest, is_contributor) VALUES ($/fullName/, $/email/, $/digestedPassword/, $/isCon/)', {
-                    fullName,
-                    email,
-                    digestedPassword,
-                    isCon: false
-                });
+                db.query('INSERT INTO users (full_name, email, password_digest, is_contributor) VALUES ($1, $2, $3, $4)', [fullName, email, digestedPassword, true])
                 res.render("success_new_user")
             })
         })

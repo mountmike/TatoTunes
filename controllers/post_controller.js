@@ -6,18 +6,43 @@ const db = require("./../db")
 
 
 // async functions for routes
+const addPost = async (req, res, next) => {
+    try {
+        await db.query(`insert into posts (title, content, yt_url, contributor_id, date_created, like_count, comment_count) 
+        VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP, 0, 0)`, [req.body.title, req.body.content, ytLinkParser(req.body.yt_url), req.session.userId]);
+        res.redirect("/feed")
+    } catch (err) {
+        next(err)
+    }
+}
+
+const removePost = async (req, res, next) => {
+    try {
+        await db.query('DELETE from posts where id = $1', [req.body.post_id])
+        res.redirect(`/feed`)
+    } catch (err) {
+        next(err)
+    }
+}
+
 const getPost = async (req, res, next) => {
     try {
         const postId = req.params.postId;
-        let post = await db.query("SELECT * FROM posts WHERE id = $1", [postId]);
+        let post = await db.query("SELECT posts.id AS id, full_name, title, content, yt_url, date_created, like_count, comment_count, contributor_id from posts join users on posts.contributor_id = users.id WHERE posts.id = $1", [postId]);
         post = post.rows[0];
-        let users = await db.query("SELECT * from users order by id");
-        users = users.rows;
-        let comments = await db.query("SELECT * FROM comments WHERE post_id = $1 order by user_id", [postId]);
+        let comments = await db.query("SELECT comments.id AS id, full_name, post_id, user_id, content, date_created FROM comments JOIN users on comments.user_id = users.id WHERE post_id = $1", [postId]);
         comments = comments.rows;
         let likes = await db.query("SELECT * FROM likes WHERE post_id = $1", [postId]);
         likes = likes.rows;
-        res.render("post_details", { post, comments, users, likes })
+        console.log(likes);
+        let hasLiked = false;
+        for (let row of likes) {
+            if (row.user_id === res.locals.currentUser.id) {
+                hasLiked = !hasLiked;
+            }
+        }
+        console.log(hasLiked);
+        res.render("post_details", { post, comments, hasLiked })
     } catch (err) {
         next(err)
     }
@@ -41,7 +66,7 @@ const addComment = async (req, res, next) => {
 
 const removeComment = async (req, res, next) => {
     try {
-        await db.query('REMOVE from comments where id = $1', ["need to pass this id in"])
+        await db.query('DELETE from comments where id = $1', ["need to pass this id in"])
 
         let count = await db.query(`SELECT comment_count from posts WHERE id = $1`, [req.body.post_id]);
         count = count.rows[0].comment_count
@@ -84,7 +109,20 @@ const removeLike = async (req, res, next) => {
     }
 }
 
-router.get("/:postId", getPost)
+function ytLinkParser(url) {
+    let embedURL = "https://www.youtube.com/embed/"
+    let arr = url.split("=")
+    return embedURL + arr[1]
+}
+
+// Routes
+router.get("/new", (req, res) => {
+    res.render("add_post")
+})
+
+router.post("/", addPost)
+
+router.delete("/", removePost)
 
 router.post("/:postId/comment", addComment)
 
@@ -93,6 +131,8 @@ router.delete("/:postId/comment", removeComment)
 router.post("/:postId/like", addLike)
 
 router.delete("/:postId/like", removeLike)
+
+router.get("/:postId", getPost)
 
 
 module.exports = router

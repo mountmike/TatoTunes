@@ -1,32 +1,39 @@
 <article>
-    <h1><%= post.title %></h1>
+    <div class="post-heading">
+        <h1><%= post.title %></h1>
+        <% if (post.contributor_id === locals.currentUser.id) { %>
+            <form action="/post" method="post">
+                <input type="hidden" name="post_id" value="<%= post.id %>">
+                <input type="hidden" name="_method" value="delete">
+                <button class="btn">Delete post</button>
+            </form>
+        <% } %>
+    </div>
     <iframe width="560" height="315" src="<%= post.yt_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <p><%= post.content %></p>
-    <p>Author: <%= users[post.contributor_id - 1].full_name %></p>
+    <p>Author: <%= post.full_name %></p>
     <p>Date create: <%= post.date_created  %></p>
     <div class="post-interaction-wrapper">
         <div class="btn-wrapper">
             <p>likes: <%= post.like_count %></p>
             <p>comments: <%= post.comment_count %></p>
         </div>
+     
 
         <a href="#commentsAnchor" class="btn">comment</a>
-
-        <% if (likes.length > 0) { %>
-            <% for (let row of likes) { %>
-                <% if (row.user_id === locals.currentUser.id) { %>
+        <% if (!hasLiked) { // if no likes ever %> 
+            <form action="/post/<%= post.id %>/like" method="post">
+                <input type="hidden" name="_method" value="post">
+                <button class="btn" id="likeBtn">like</button>
+            </form>
+        <% } else { %>
                 <form action="/post/<%= post.id %>/like" method="post">
                     <input type="hidden" name="_method" value="delete">
                     <button class="btn" id="likeBtn">unlike</button>
                 </form>
-                <% } %>
-            <% } %>
-        <% } else { %>
-                <form action="/post/<%= post.id %>/like" method="post">
-                    <input type="hidden" name="_method" value="post">
-                    <button class="btn" id="likeBtn">like</button>
-                </form>
         <% } %>
+          
+    
         
     </div>
 </article>
@@ -45,9 +52,9 @@
     <% } %>
     <div class="comments-wrapper">
         <% for (let comment of comments) { %>
-            <article>
+            <article>   
                 <p><%= comment.content %></p>
-                <p><%= users[comment.user_id - 1].full_name %></p>
+                <p><%= comment.full_name %></p>
                 <p><%= comment.date_created.toLocaleString() %></p>
             </article>
         <% } %>
