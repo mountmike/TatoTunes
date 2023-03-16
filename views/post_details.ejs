@@ -11,15 +11,27 @@
         </div>
 
         <a href="#commentsAnchor" class="btn">comment</a>
-        <form action="/post/<%= post.id %>/like" method="post">
-            <input type="hidden" name="like_count" value="<%= locals.currentUser %>">
-            <button class="btn" id="likeBtn">like</button>
-        </form>
+
+        <% if (likes.length > 0) { %>
+            <% for (let row of likes) { %>
+                <% if (row.user_id === locals.currentUser.id) { %>
+                <form action="/post/<%= post.id %>/like" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button class="btn" id="likeBtn">unlike</button>
+                </form>
+                <% } %>
+            <% } %>
+        <% } else { %>
+                <form action="/post/<%= post.id %>/like" method="post">
+                    <input type="hidden" name="_method" value="post">
+                    <button class="btn" id="likeBtn">like</button>
+                </form>
+        <% } %>
         
     </div>
 </article>
 <a id="commentsAnchor">
-    <% if (true) { %>
+    <% if (isLoggedIn()) { %>
     <section class="">
         <form action="/post/:postId/comment" method="post">
             <input type="hidden" name="_method" value="post">

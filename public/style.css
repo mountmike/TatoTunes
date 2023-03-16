@@ -65,6 +65,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 5px;
 }
 
 .search-wrapper > a {
@@ -86,6 +87,10 @@ nav > ul {
 
 nav > ul > li {
    margin: 0 5px;
+}
+
+nav > ul > form > span {
+  margin: 0 10px;
 }
 section {
     display: flex;
@@ -234,4 +239,9 @@ i {
   .tagline > p {
     margin-top: 0;
     font-size: 1.19em;
+  }
+
+  .welcome-msg {
+    color: white;
+    font-weight: 100;
   }

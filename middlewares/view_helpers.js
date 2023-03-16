@@ -6,6 +6,9 @@ function viewHelpers(req, res, next) {
             return false
         }
     }
+    res.locals.myFunction = () => {
+        console.log("my function");
+    }
     next()
 }
 
