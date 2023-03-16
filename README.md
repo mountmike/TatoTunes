@@ -28,9 +28,11 @@ Theme
 Wireframe for Home page:
 ![Wireframe1](https://github.com/mountmike/TatoTunes/blob/main/public/images/wireframe1.png?raw=true)
 
+The biggest challenge going into this project seems to be how to structure the database. I drew up some tables with a plan and decided to move forward - for better or worse!
+
 # Phase 2
 
-After first day of coding I had a rough MVP but was running into callback hell when it came to running multiple queries to the db on one route. It was clear that I needed a better approach so I added 'pg-promise' to my modules and began researching how to use it.
+After first day of coding I had a rough MVP but was running into callback hell when it came to running multiple queries to the db on one route. It was clear that I needed a better approach so I began exploring asyncronous functions and promises. After some reading I found an alternative to "Node PG" for accessing my database called "PG-PROMISE" which had clear documentation I could follow. I re-wrote most of my code using ``try``, ``catch`` & ``await `` with this module. Innitially this seemed to fix the previous day's bugs like a charm but as I progressed I began noticing strange bugs. An entire afternoon of debugging lead to me realise I could write similar asyncronous functions with the original "NODE PG" and thus my evening was spent re-re-writing the route functions at which point I had some wonderful sucess and all the database queries began consistently deliverying the expected results.
 
 
 
