@@ -2,10 +2,10 @@
 
 Project 2 for GA SEI - Express.js CRUD app using Postgres deployed on Render.
 
-Try it [here] (https://mountmike.github.io/Tic-Tac-Toe/)
-
+Try it here (https://tatotunes.onrender.com/)
 
 Screenshot:
+![Screnshot](https://github.com/mountmike/TatoTunes/blob/main/public/images/screenshot.png?raw=true)
 
 
 
@@ -45,16 +45,16 @@ After first day of coding I had a rough MVP but was running into callback hell w
 
 # Phase 3
 **Like/Comment buttons and functions**
-- Manage different users liking and commenting - the challenge I faced was only enabling a like if the user 
+- The challenge I faced was only enabling a like if the user hadn't yet liked a post - an exercise that seemed very simply on paper but threw my head for a newbie spin on execution.
 
-**Adding old *file* menu bar on the window which would unlock extra settings such as:**
-- Custom player names
-- New game to reset the board and scores.
+**Add ability to create a new post**
+- Easy enough but I want the UI to be a lot more cleaner and modern thatn previous attempts
+
+**Add individual profile pages that can be dynamically linked to from all over the app**
+
 
 # Future thoughts
-- As an extra aesthetic feature I would love to have the screen mimic the Windows desktop environment and be able to launch the .exe, minimize, maximise and close it.
-- Add to file menu something like:
-    - Different game modes (such as speed round where you have 3 seonds to win)
-    - Different board sizes
+- Profile images
+- Randomized pairing of potatoes and tunes
 
 
