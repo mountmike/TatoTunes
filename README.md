@@ -44,8 +44,8 @@ After first day of coding I had a rough MVP but was running into callback hell w
 
 
 # Phase 3
-**Saving score between refreshes**
-- researched localStorage and added function to save scores, but now needs reset score capability
+**Like/Comment buttons and functions**
+- Manage different users liking and commenting - the challenge I faced was only enabling a like if the user 
 
 **Adding old *file* menu bar on the window which would unlock extra settings such as:**
 - Custom player names

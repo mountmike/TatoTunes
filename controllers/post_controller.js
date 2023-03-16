@@ -34,14 +34,12 @@ const getPost = async (req, res, next) => {
         comments = comments.rows;
         let likes = await db.query("SELECT * FROM likes WHERE post_id = $1", [postId]);
         likes = likes.rows;
-        console.log(likes);
         let hasLiked = false;
         for (let row of likes) {
             if (row.user_id === res.locals.currentUser.id) {
                 hasLiked = !hasLiked;
             }
         }
-        console.log(hasLiked);
         res.render("post_details", { post, comments, hasLiked })
     } catch (err) {
         next(err)
@@ -66,14 +64,15 @@ const addComment = async (req, res, next) => {
 
 const removeComment = async (req, res, next) => {
     try {
-        await db.query('DELETE from comments where id = $1', ["need to pass this id in"])
+        await db.query('DELETE from comments where id = $1', [req.body.commentId])
 
-        let count = await db.query(`SELECT comment_count from posts WHERE id = $1`, [req.body.post_id]);
+        let count = await db.query(`SELECT comment_count from posts WHERE id = $1`, [req.body.postId]);
         count = count.rows[0].comment_count
         count--
-        await db.query(`UPDATE posts SET comment_count = $1 where id = $2`, [count, req.body.post_id]);
 
-        res.redirect(`/post/${req.body.post_id}`)
+        await db.query(`UPDATE posts SET comment_count = $1 where id = $2`, [count, req.body.postId]);
+
+        res.redirect(`/post/${req.body.postId}`)
     } catch (err) {
         next(err)
     }
@@ -115,6 +114,17 @@ function ytLinkParser(url) {
     return embedURL + arr[1]
 }
 
+const getSearchResults = async (req, res, next) => {
+    let input = req.query.input;
+    try {
+        let { rows } = await db.query(`select * from posts where content LIKE '%${input}%'`);
+        res.render("search_results", { posts: rows, input })
+
+    } catch (err) {
+        next(err)
+    }
+}
+
 // Routes
 router.get("/new", (req, res) => {
     res.render("add_post")
@@ -132,7 +142,11 @@ router.post("/:postId/like", addLike)
 
 router.delete("/:postId/like", removeLike)
 
+router.get("/search", getSearchResults)
+
 router.get("/:postId", getPost)
+
+
 
 
 module.exports = router

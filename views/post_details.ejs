@@ -1,4 +1,7 @@
 <article>
+    <div class="back-to-feed">
+        <a class="back-to-feed" href="/feed"><i class="fa-solid fa-arrow-left-long back-to-feed"> back to feed</i></a>
+    </div>
     <div class="post-heading">
         <h1><%= post.title %></h1>
         <% if (post.contributor_id === locals.currentUser.id) { %>
@@ -9,54 +12,66 @@
             </form>
         <% } %>
     </div>
-    <iframe width="560" height="315" src="<%= post.yt_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    <p><%= post.content %></p>
-    <p>Author: <a href="/user/profile/<%= post.contributor_id %>"><%= post.full_name %></a></p>
-    <p>Date create: <%= post.date_created  %></p>
+    <p class="author"><span class="bold">By: </span> <a href="/user/profile/<%= post.contributor_id %>"><%= post.full_name %></a></p>
+    <div class="video-wrapper">
+        <iframe width="560" height="315" src="<%= post.yt_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="content">
+        <p><%= post.content %></p>
+    </div>
+    <p><span class="bold">Posted: </span> <%= post.date_created.toString().slice(0,21)  %></p>
     <div class="post-interaction-wrapper">
         <div class="btn-wrapper">
-            <p>likes: <%= post.like_count %></p>
-            <p>comments: <%= post.comment_count %></p>
-        </div>
-     
 
-        <a href="#commentsAnchor" class="btn">comment</a>
-        <% if (!hasLiked) { // if no likes ever %> 
-            <form action="/post/<%= post.id %>/like" method="post">
-                <input type="hidden" name="_method" value="post">
-                <button class="btn" id="likeBtn">like</button>
-            </form>
-        <% } else { %>
+            <% if (!hasLiked) { // if no likes ever %> 
                 <form action="/post/<%= post.id %>/like" method="post">
-                    <input type="hidden" name="_method" value="delete">
-                    <button class="btn" id="likeBtn">unlike</button>
+                    <input type="hidden" name="_method" value="post">
+                    <button ><i class="fa-regular fa-heart like-comment-btns"> <%= post.like_count %> </i></button>
                 </form>
-        <% } %>
-          
-    
-        
+            <% } else { %>
+                    <form action="/post/<%= post.id %>/like" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <button ><i class="fa-solid fa-heart like-comment-btns"> <%= post.like_count %> </i></button>
+                    </form>
+            <% } %>
+            <i class="fa-regular fa-comment like-comment-btns"> <%= post.comment_count %> </i>
+        </div>
+
     </div>
 </article>
 <a id="commentsAnchor">
+<article>
     <% if (isLoggedIn()) { %>
-    <section class="">
-        <form action="/post/:postId/comment" method="post">
+    <div></div>
+        <form action="/post/:postId/comment" method="post" class="add-comment">
             <input type="hidden" name="_method" value="post">
-            <label for="content"></label>
-            <input type="text" name="content" placeholder="type here" id="asdf">
+            <textarea name="content" placeholder="type here"></textarea>
             <input type="hidden" name="post_id" value="<%= post.id %>">
             <input type="hidden" name="date_created" value="CURRENT_TIMESTAMP">
-            <button>Comment</button>
+            <button class="comment-btn">Comment</button>
         </form>
-    </section>
+    </div>
     <% } %>
     <div class="comments-wrapper">
+        <% console.log(comments); %>
         <% for (let comment of comments) { %>
-            <article>   
-                <p><%= comment.content %></p>
-                <p><%= comment.full_name %></p>
-                <p><%= comment.date_created.toLocaleString() %></p>
-            </article>
+            <div class="comment-card">
+                <div>
+                    <p class="left"><a href="/user/profile/<%= comment.user_id %>" class="bold dark"><%= comment.full_name %></a></p>
+                    <p><%= comment.content %></p>
+                </div>
+                <div>
+                    <p class="light"><%= comment.date_created.toLocaleString() %></p>
+                    <form action="/post/<%= post.id %>/comment" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="commentId" value="<%= comment.id %>">
+                        <input type="hidden" name="postId" value="<%= post.id %>">
+                        <button> <i class="fa-solid fa-trash-can" id="dark"></i></button>
+                    </form>
+                   
+                </div>
+            </div>
         <% } %>
     </div>
-</a>
+    </a>
+</article>

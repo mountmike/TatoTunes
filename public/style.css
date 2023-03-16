@@ -1,6 +1,6 @@
 /* * {
-    border: white 1px solid;
-} */
+    border: red 1px solid;
+}  */
 
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
@@ -16,6 +16,17 @@ body {
     color: #131211;
     background-color: #9c2d3c;
 }
+
+a {
+  color: inherit; 
+  text-decoration: underline; 
+}
+
+a:hover {
+  color: #9c2d3c;
+}
+
+
 
 header {
     margin: 0;
@@ -36,7 +47,9 @@ header {
 
 main {
     background-color: white;
-    width: 50%;
+    min-width: 560px;
+    margin-top: -20px;
+    margin-bottom: 100px;
     box-shadow: 10px 10px 33px -6px rgba(0,0,0,0.76);
     -webkit-box-shadow: 10px 10px 33px -6px rgba(0,0,0,0.76);
     -moz-box-shadow: 10px 10px 33px -6px rgba(0,0,0,0.76);
@@ -51,6 +64,18 @@ footer {
 
 h1 {
     font-size: 2em;
+}
+
+.h1 {
+  font-size: 3em;
+  color: white;
+  font-family: 'Tilt Warp';
+  margin: 1%;
+  z-index: 3;
+}
+
+h2 {
+  margin: 0;
 }
 
 .footer-text {
@@ -95,12 +120,22 @@ nav > ul > form > span {
 section {
     display: flex;
     flex-direction: column;
-    margin: 5%;
+    width: 100%;
 }
 
 article {
-    border: white 1px solid;
-    padding: 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: 2% 10%;
+    width: 80%;
+}
+
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .post-interaction-wrapper {
@@ -118,12 +153,14 @@ article {
 .comments-wrapper {
     display: flex;
     flex-direction: column;
-    margin: 5%;
+    margin: 1%;
 }
 
 .btn-wrapper {
-    display: flex;
-    gap: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 button, input[type="submit"], input[type="reset"] {
@@ -135,6 +172,7 @@ button, input[type="submit"], input[type="reset"] {
 	cursor: pointer;
 	outline: inherit;
 }
+
 
 .btn,
 .btn:link,
@@ -148,6 +186,10 @@ button, input[type="submit"], input[type="reset"] {
  display: inline-block;
  transition: all .2s;
  position: relative;
+}
+
+#dark {
+  color: #9c2d3c;
 }
 
 .btn:hover {
@@ -173,7 +215,7 @@ i {
 }
 
 i:hover {
-  scale: 1.3;
+  scale: 1.2;
   transition: .1s;
 }
 
@@ -189,8 +231,8 @@ i:hover {
     font-size: inherit;
     background-color: #f4f2f2;
     border: none;
-    color: #646464;
-    padding: 0rem .6rem;
+    color: #131211;
+    padding: .6rem 1rem;
     border-radius: 30px;
     width: 12em;
     transition: all ease-in-out .5s;
@@ -219,7 +261,7 @@ i:hover {
     border: none;
     background-color: #f4f2f2;
     margin-top: .1em;
-    scale: .8;
+    scale: 1;
   }
   
   .search__button:hover {
@@ -238,12 +280,13 @@ i:hover {
   .tagline > h1 {
     font-family: 'Tilt Warp';
     text-transform: uppercase;
-    margin: 0;
+    font-size: 1.7em;
+    margin-bottom: 0;
   }
 
   .tagline > p {
     margin-top: 0;
-    font-size: 1.19em;
+    font-size: 1em;
   }
 
   .welcome-msg {
@@ -255,9 +298,114 @@ i:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0;
+    height: 4rem;
   }
+
 
 .post-heading > form > button {
   background-color: #9c2d3c;
   text-align: center;
+  margin-top: -10px;
+}
+
+.back-to-feed {
+  display: flex;
+  align-items: center;
+  color: #9c2d3c;
+  text-decoration: none;
+}
+
+.author {
+  margin-top: 0;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.like-comment-btns {
+  color: #131211;
+}
+
+textarea {
+  width: 70%;
+  resize: none;
+  margin: 0;
+  padding: 1%;
+  font-family: 'Hind', sans-serif;
+}
+
+.add-comment {
+  border-top: #646464 1px solid;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.comment-btn {
+  background-color: #9c2d3c;
+  color: white;
+  padding: 5%;
+  font-family: 'Hind', sans-serif;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.comment-btn:hover {
+  scale: 1.05;
+  transition: .1s;
+}
+
+.comment-card {
+  display: flex;
+  flex-direction: column;
+  border: #9c2d3c 1px solid;
+  margin: 1% 0;
+  padding: 1% 2%;
+  border-radius: 5px;
+}
+
+.comment-card > div {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.left {
+  flex: 1;
+}
+
+.light {
+  font-weight: 100;
+}
+
+.content {
+  max-width: 560px;
+}
+
+.content > p {
+  text-align: justify;
+}
+
+.bottom-line {
+  width: 100%;
+  margin: 5% 0;
+  border-bottom: #9c2d3c 1px solid;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 10%;
+}
+
+.form-wrapper > button {
+  margin: 5% 0;
+}
+
+.form-wrapper > textarea {
+  width: 97%;
 }
