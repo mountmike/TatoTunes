@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TatoTunes</title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <script src="/main.js" defer></script>
     <script src="https://kit.fontawesome.com/57a970835f.js" crossorigin="anonymous"></script>
 </head>
@@ -31,9 +32,11 @@
             <h1 class="h1">TATOTUNES</h1>
             <ul>
                 <% if (isLoggedIn()) { %>
-                    
+                        <a href="/post/combo">
+                            <svg class="combo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 143.55 143.34"><defs><style>.cls-1{fill:#f9f9f9;stroke:#fff;stroke-miterlimit:10;stroke-width:7px;}</style></defs><title>tatoicon</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M56.89,139.84c-24.73,0-42.5-11.24-50.35-31.79C1.7,95.38,2.16,82.82,11.43,72.92c19.34-20.65,38.32-41.86,60.06-60,18.62-15.53,42.38-11.3,57.38,8.33,11.72,15.33,13,32.76,9.39,50.94C130.57,110.86,95.69,139.78,56.89,139.84Zm.27-7c2.39-.3,5.78-.76,9.17-1.16C107.24,126.8,138.64,85,131.4,44.55c-2.69-15-11.57-25.59-25.77-31.46C92,7.46,81,13.35,71.68,22.25,54.07,39.16,37.29,56.93,19.89,74.08c-10.75,10.59-11.16,23-4,36.43C24.49,126.7,39.21,131.73,57.16,132.84Z"/><circle class="cls-1" cx="81.08" cy="43.5" r="3.5"/><circle class="cls-1" cx="101.58" cy="31.5" r="3.5"/><circle class="cls-1" cx="105.08" cy="75.17" r="3.5"/><circle class="cls-1" cx="40.08" cy="94.12" r="3.5"/><circle class="cls-1" cx="63.27" cy="115" r="3.5"/><circle class="cls-1" cx="59.77" cy="87.12" r="3.5"/></g></g></svg>
+                        </a>
                     <form action="/session" method="post">
-                        <a href="/post/new"><i class="fa-solid fa-plus fa-xl"></i></a>
+                        <a href="/post/new"><i class="fa-solid fa-plus fa-2xl"></i></a>
                         <a href="/user/profile/<%= locals.currentUser.id %>"><i class="fa-solid fa-user fa-xl"></i></a>
                         <input type="hidden" name="_method" value="delete">
                         <button class="btn">logout</button>

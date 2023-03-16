@@ -421,3 +421,13 @@ textarea {
 h3 {
   margin: 1%;
 }
+
+.combo-icon {
+  height: 1.8em;
+  margin: 2px 15px 10px 5px;
+}
+
+.combo-icon:hover {
+  transform: scale(1.1);
+  transition: .2s;
+}
