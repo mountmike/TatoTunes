@@ -1,0 +1,13 @@
+<article>
+    <div class="profile-heading">
+        <h1><%= user.full_name %></h1>
+        <h5><%= user.email %></h5>
+    </div>
+    <img src="" alt="">
+    <h2>Posts:</h2>
+    <% for (post of posts) { %>
+        <div class="profile-card">
+            <a href="/post/<%= post.id %>"><h3><%= post.title %></h3></a>
+        </div>
+    <% } %>
+</article>
