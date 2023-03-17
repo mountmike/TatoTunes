@@ -16,6 +16,29 @@ const addPost = async (req, res, next) => {
     }
 }
 
+const getEditPage = async (req, res, next) => {
+    try {
+        let postId = req.params.postId;
+        let sql = `select * from posts where id = ${postId};`;
+        db.query(sql, (err, dbRes) => {
+            const post = dbRes.rows[0];
+            res.render("edit_post", { post })
+        });
+    } catch (err) {
+        next(err)
+    }
+}
+
+const updatePost = async (req, res, next) => {
+    try {
+        db.query("UPDATE posts set title = $1, yt_url = $2, content = $3 where id = $4", [req.body.title, req.body.yt_url, req.body.content, req.params.postId], (err, dbRes) => {
+            res.redirect(`/post/${req.params.postId}`)
+        });
+    } catch (err) {
+        next(err)
+    }
+}
+
 const removePost = async (req, res, next) => {
     try {
         await db.query('DELETE from posts where id = $1', [req.body.post_id])
@@ -149,6 +172,10 @@ router.delete("/", removePost)
 router.get("/combo", (req, res) => {
     res.render("mad_combo")
 })
+
+router.put("/:postId", updatePost)
+
+router.get("/:postId/edit", getEditPage)
 
 router.post("/:postId/comment", addComment)
 

@@ -307,11 +307,19 @@ i:hover {
     height: 4rem;
   }
 
-
-.post-heading > form > button {
+.owner-btns {
+  display: flex;
+}
+.owner-btns > form > button {
   background-color: #9c2d3c;
   text-align: center;
-  margin-top: -10px;
+  margin: 0;
+}
+
+.owner-btns > a {
+  text-align: center;
+  margin: 0 5px;
+  height: 1.4em;
 }
 
 .back-to-feed {

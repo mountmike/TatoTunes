@@ -1,0 +1,13 @@
+<article>
+    <h1>Edit Post</h1>
+    <form class="form-wrapper" action="/post/<%= post.id %>" method="post">
+        <input type="hidden" name="_method" value="put">
+        <label class="bold" for="title">Title</label>
+        <input type="text" name="title" value="<%= post.title %>">
+        <label class="bold" for="yt_url">YouTube Link</label>
+        <input type="text" name="yt_url" value="<%= post.yt_url %>">
+        <label class="bold" for="content">Content</label>
+        <textarea name="content" id="" cols="60" rows="10"><%= post.content %></textarea>
+        <button class="btn" id="dark">Update</button>
+    </form>
+</article>

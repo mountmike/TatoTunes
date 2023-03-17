@@ -4,13 +4,17 @@
     </div>
     <div class="post-heading">
         <h1><%= post.title %></h1>
-        <% if (post.contributor_id === locals.currentUser.id) { %>
-            <form action="/post" method="post">
-                <input type="hidden" name="post_id" value="<%= post.id %>">
-                <input type="hidden" name="_method" value="delete">
-                <button class="btn">Delete post</button>
-            </form>
-        <% } %>
+        <div class="owner-btns">
+            <% if (post.contributor_id === locals.currentUser.id) { %>
+                <a href="/post/<%= post.id %>/edit" class="btn" id="dark">Edit</a>
+                <form action="/post" method="post">
+                    <input type="hidden" name="post_id" value="<%= post.id %>">
+                    <input type="hidden" name="_method" value="delete">
+                    <button class="btn">Delete</button>
+                </form>
+            
+            <% } %>
+        </div>
     </div>
     <p class="author"><span class="bold">By: </span> <a href="/user/profile/<%= post.contributor_id %>"><%= post.full_name %></a></p>
     <div class="video-wrapper">

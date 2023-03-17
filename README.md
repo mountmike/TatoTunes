@@ -59,5 +59,5 @@ After the first day of coding I had a rough MVP but was running into callback he
 - Profile images
 - ~~Randomized pairing of potatoes and tunes~~
     - Now a beta feature | an engine that will automatially find you a tune to listen based on the potato you select.
-
+- Mobile friendly!
 
