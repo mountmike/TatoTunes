@@ -2,8 +2,8 @@ const express = require("express");
 // const Router = require('express-promise-router')
 const router = express.Router();
 const db = require("./../db")
-// const ensureLoggedIn = require("./../middlewares/ensure_logged_in")
-
+const ensureLoggedIn = require("./../middlewares/ensure_logged_in")
+const randomUrlGen = require("random-youtube-music-video");
 
 // async functions for routes
 const addPost = async (req, res, next) => {
@@ -125,14 +125,30 @@ const getSearchResults = async (req, res, next) => {
     }
 }
 
+const getPotatoSong = async (req, res, next) => {
+    const potato = req.params.potato;
+    try {
+        const youtubeUrl = await randomUrlGen.getRandomMusicVideoUrl();
+        console.log(youtubeUrl);
+        res.render("get_potato_song", { yt_url_OG: youtubeUrl, yt_url: ytLinkParser(youtubeUrl), potato })
+    } catch (err) {
+        next(err)
+    }
+}
+
 // Routes
 router.get("/new", (req, res) => {
-    res.render("add_post")
-})
+    const yt_url = req.query.yt_url;
+    res.render("add_post", { yt_url})
+});
 
 router.post("/", addPost)
 
 router.delete("/", removePost)
+
+router.get("/combo", (req, res) => {
+    res.render("mad_combo")
+})
 
 router.post("/:postId/comment", addComment)
 
@@ -141,6 +157,8 @@ router.delete("/:postId/comment", removeComment)
 router.post("/:postId/like", addLike)
 
 router.delete("/:postId/like", removeLike)
+
+router.get("/combo/:potato", getPotatoSong)
 
 router.get("/search", getSearchResults)
 

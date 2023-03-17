@@ -34,6 +34,7 @@
     "method-override": "^3.0.0",
     "pg": "^8.10.0",
     "pg-promise": "^11.4.1",
+    "random-youtube-music-video": "^1.0.6",
     "underscore": "^1.13.6"
   },
   "devDependencies": {

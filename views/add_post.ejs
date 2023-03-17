@@ -5,7 +5,11 @@
         <label class="bold" for="title">Title</label>
         <input type="text" name="title" id="">
         <label class="bold" for="yt_url">YouTube Link</label>
-        <input type="text" name="yt_url" id="">
+        <% if (yt_url) { %>
+            <input type="text" name="yt_url" value="<%= yt_url %>">
+        <% } else { %>
+            <input type="text" name="yt_url"> 
+        <% } %>
         <label class="bold" for="content">Content</label>
         <textarea name="content" id="" cols="60" rows="10"></textarea>
         <button class="btn" id="dark">Share</button>

@@ -60,6 +60,7 @@ footer {
     margin: 0;
     width: 100%;
     bottom: 0px;
+    z-index: -1;
 }
 
 footer > a {
@@ -430,4 +431,95 @@ h3 {
 .combo-icon:hover {
   transform: scale(1.1);
   transition: .2s;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 10rem;
+}
+
+.grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  color: white;
+  font-family: 'Tilt Warp';
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
+
+.grid-item > p {
+  text-align: center;
+
+}
+
+.grid-item > a { 
+  backdrop-filter: blur(10px);
+  width: 100%;
+  text-decoration: none;
+  padding: 1%;
+  text-align: center;
+}
+
+.grid-item > a:hover { 
+  color: white;
+  text-decoration: underline;
+}
+
+.p1 {
+  background-image: url("/images/potato_grid/beauregard.jpeg");
+  
+}
+
+.p2 {
+  background-image: url("/images/potato_grid/chat.webp");
+  
+}
+
+.p3 {
+  background-image: url("/images/potato_grid/hannah.jpeg");
+}
+
+.p4 {
+  background-image: url("/images/potato_grid/kestrel.jpeg");
+}
+
+.p5 {
+  background-image: url("/images/potato_grid/kipfer.webp");
+}
+
+.p6 {
+  background-image: url("/images/potato_grid/mozart.jpeg");
+}
+
+.p7 {
+  background-image: url("/images/potato_grid/nicola.jpeg");
+}
+
+.p8 {
+  background-image: url("/images/potato_grid/okinawa.webp");
+}
+
+.p9 {
+  background-image: url("/images/potato_grid/ruby_lou.webp");
+}
+
+#id {
+ text-align: center;
+}
+
+#comboResult {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.combo-heading {
+  text-align: center;
+  margin: 1%;
 }
