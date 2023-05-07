@@ -4,7 +4,7 @@ A blog type CRUD app that focuses on pairing good music & potatoes, built with *
 
 [Try it here](https://tatotunes.onrender.com/) (deployed on Render's free tier so may take half a minute for the server to spin up)
 
-<sub>**Guest credentials**: email: `guest@guestmail.com` && password: `pudding`
+**Guest credentials**: email: `guest@guestmail.com` && password: `pudding`
 
 Screenshot:
 ![Screnshot](https://github.com/mountmike/TatoTunes/blob/main/public/images/screenshot.png?raw=true)
