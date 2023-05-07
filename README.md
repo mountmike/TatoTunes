@@ -31,7 +31,7 @@ The biggest challenge going into this project seems to be how to structure the d
 - ~~Farmville?~~
 
 
-Quick Wireframe for Home page:
+### Quick Wireframe for Home page:
 
 ![Wireframe1](https://github.com/mountmike/TatoTunes/blob/main/public/images/wireframe1.png?raw=true)
 
